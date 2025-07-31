@@ -27,7 +27,7 @@ class FPDSServiceManager:
         
         # Build command line arguments
         cmd_args = [
-            "/home/fpds-crawler/anaconda3/envs/py311/bin/python",
+            "/usr/bin/python3",
             "fpds_high_performance.py"
         ]
         
@@ -60,15 +60,15 @@ class FPDSServiceManager:
 Description=FPDS High Performance Crawler Service
 After=network.target
 Wants=network.target
-Documentation=https://github.com/your-repo/crawler
+Documentation=https://github.com/trungdung22/fpds-crawler
 
 [Service]
 Type=simple
 User=fpds-crawler
 Group=fpds-crawler
-WorkingDirectory=/home/fpds-crawler/crawler
-Environment=PATH=/home/fpds-crawler/anaconda3/envs/py311/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-Environment=PYTHONPATH=/home/fpds-crawler/crawler
+WorkingDirectory=/home/fpds-crawler/fpds-crawler
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+Environment=PYTHONPATH=/home/fpds-crawler/fpds-crawler
 ExecStart={exec_start}
 Restart=on-failure
 RestartSec=30
@@ -86,7 +86,7 @@ NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=strict
 ProtectHome=true
-ReadWritePaths=/home/fpds-crawler/crawler/result_data,/home/fpds-crawler/crawler/failed_request_data
+ReadWritePaths=/home/fpds-crawler/fpds-crawler/result_data,/home/fpds-crawler/fpds-crawler/failed_request_data
 
 # Logging
 StandardOutput=append:{self.log_file}
