@@ -1,0 +1,166 @@
+{
+  "symbol": "btc",
+  "timestamp": "2025-08-03T16:59:28.691218",
+  "sentiment_analysis": {
+    "overall_sentiment": 0.15975958102177693,
+    "sentiment_label": "positive",
+    "news_sentiment": 0.0,
+    "social_sentiment": 0.26626596836962824,
+    "sentiment_trend": "stable",
+    "top_keywords": [],
+    "sentiment_sources": {
+      "news": 0.0,
+      "social": 0.26626596836962824,
+      "reddit": 0.26626596836962824,
+      "twitter": 0.0
+    },
+    "fear_greed_index": 56.406488713331875
+  },
+  "news_articles": [],
+  "social_posts": [
+    {
+      "platform": "reddit",
+      "content": "So, there is a post describing how a solo miner just scored a full bitcoin block reward. Here is a breakdown on what actually happened and how insane it is A random solo miner just walked away with\u00a0**...",
+      "published_at": "2025-08-03T12:07:58",
+      "sentiment": "positive",
+      "influence": 0.15030000000000002,
+      "engagement": {
+        "upvotes": 198,
+        "downvotes": 0,
+        "comments": 39,
+        "score": 198
+      }
+    },
+    {
+      "platform": "reddit",
+      "content": "How a police officer stole 50 BTC from a seized crypto wallet and got caught ",
+      "published_at": "2025-08-02T23:14:41",
+      "sentiment": "neutral",
+      "influence": 0.25639999999999996,
+      "engagement": {
+        "upvotes": 350,
+        "downvotes": 0,
+        "comments": 38,
+        "score": 350
+      }
+    },
+    {
+      "platform": "reddit",
+      "content": "Investor Brian Kelly Outlines Bitcoin\u2019s Path to a Potential 7x Rally, Calls BTC the Most Important Financial \u2018Innovation\u2019 in 600 Years ",
+      "published_at": "2025-08-03T03:22:49",
+      "sentiment": "positive",
+      "influence": 0.0324,
+      "engagement": {
+        "upvotes": 33,
+        "downvotes": 0,
+        "comments": 31,
+        "score": 33
+      }
+    },
+    {
+      "platform": "reddit",
+      "content": "Daily Bitcoin meme until BTC is at $200,000 #58 ",
+      "published_at": "2025-08-02T23:07:17",
+      "sentiment": "neutral",
+      "influence": 0.25980000000000003,
+      "engagement": {
+        "upvotes": 369,
+        "downvotes": 0,
+        "comments": 5,
+        "score": 369
+      }
+    },
+    {
+      "platform": "reddit",
+      "content": "No matter what i'm holding my Bitcoin Despite the dip, BTC\u2019s history of bouncing back keeps sentiment alive. Are you buying, holding, or staying cautious right now? ",
+      "published_at": "2025-08-02T22:20:25",
+      "sentiment": "neutral",
+      "influence": 0.3033,
+      "engagement": {
+        "upvotes": 414,
+        "downvotes": 0,
+        "comments": 45,
+        "score": 414
+      }
+    },
+    {
+      "platform": "reddit",
+      "content": "BTC Dip Below $114K, But Conviction Remains Strong Among Holders Despite Bitcoin dipping below $114K, long term holders remain confident. Market dips are normal, and BTC's value goes beyond price, let...",
+      "published_at": "2025-08-03T00:23:38",
+      "sentiment": "positive",
+      "influence": 0.1105,
+      "engagement": {
+        "upvotes": 154,
+        "downvotes": 0,
+        "comments": 9,
+        "score": 154
+      }
+    },
+    {
+      "platform": "reddit",
+      "content": "Expected returns on BTC over the next 10 years I see that BTC has had a compounding annual return of around 80% over the last 10 years.   \nThis is far greater than the S&amp;P, which has returned arou...",
+      "published_at": "2025-08-03T16:02:07",
+      "sentiment": "positive",
+      "influence": 0.0095,
+      "engagement": {
+        "upvotes": 8,
+        "downvotes": 0,
+        "comments": 13,
+        "score": 8
+      }
+    },
+    {
+      "platform": "reddit",
+      "content": "Remembering the giveaway - 12 * $50 in BTC five years ago I know we all warn people that no one gives away money ... but I am reminded (and a month or so off from the anniversary) of what happened her...",
+      "published_at": "2025-08-03T04:23:30",
+      "sentiment": "positive",
+      "influence": 0.047799999999999995,
+      "engagement": {
+        "upvotes": 67,
+        "downvotes": 0,
+        "comments": 3,
+        "score": 67
+      }
+    },
+    {
+      "platform": "reddit",
+      "content": "If you had $5K to invest in crypto right now, what would you buy? If you had $5K to invest in crypto right now, what would you buy?\n\nThe market is bearish, which can be a great time to invest before t...",
+      "published_at": "2025-08-02T19:27:37",
+      "sentiment": "positive",
+      "influence": 0.0363,
+      "engagement": {
+        "upvotes": 18,
+        "downvotes": 0,
+        "comments": 79,
+        "score": 18
+      }
+    },
+    {
+      "platform": "reddit",
+      "content": "Why Is Trading in August So Bizarre? (Low Volume, Macro Silence, BTC Chop) ",
+      "published_at": "2025-08-02T17:36:59",
+      "sentiment": "negative",
+      "influence": 0.0007,
+      "engagement": {
+        "upvotes": 1,
+        "downvotes": 0,
+        "comments": 0,
+        "score": 1
+      }
+    },
+    {
+      "platform": "reddit",
+      "content": "Edge wallet uses MyMonero servers for convenience? Ive been learning more Abt financial privacy and trying to learn how to keep everything on the down low. I downloaded edge wallet, bought like $50 in...",
+      "published_at": "2025-08-03T04:04:51",
+      "sentiment": "positive",
+      "influence": 0.0007,
+      "engagement": {
+        "upvotes": 1,
+        "downvotes": 0,
+        "comments": 0,
+        "score": 1
+      }
+    }
+  ],
+  "trending_topics": []
+}

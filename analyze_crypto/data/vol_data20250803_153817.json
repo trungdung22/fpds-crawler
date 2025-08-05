@@ -1,0 +1,985 @@
+{
+  "symbol": "BTC",
+  "timestamp": "2025-08-03T15:38:15.814940",
+  "timeframe": "1D",
+  "time_filter": "last 7 days",
+  "vwap_data": {
+    "vwap": 107838.95761464174,
+    "standard_deviations": {
+      "+1": 114792.28512674592,
+      "+2": 121745.61263885011,
+      "-1": 100885.63010253756,
+      "-2": 93932.30259043336
+    },
+    "volume_trend": "decreasing",
+    "price_vs_vwap": 5.345018639697662,
+    "timestamp": "2025-08-03T15:38:16.108727",
+    "data_start_time": "2025-04-26T07:00:00",
+    "data_end_time": "2025-08-03T07:00:00"
+  },
+  "volume_profile": {
+    "poc_price": 106100.01,
+    "value_areas": {
+      "high": 116052.0,
+      "low": 96876.29
+    },
+    "volume_nodes": [
+      {
+        "price": 95199.0,
+        "volume": 2666.625064,
+        "timestamp": "2025-05-02T02:44:12.312032",
+        "significance": "medium"
+      },
+      {
+        "price": 96876.29,
+        "volume": 3496.2028469999996,
+        "timestamp": "2025-05-08T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 97684.01,
+        "volume": 3496.2028469999996,
+        "timestamp": "2025-05-08T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 98200.0,
+        "volume": 2874.641072,
+        "timestamp": "2025-06-22T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 98491.73,
+        "volume": 3496.2028469999996,
+        "timestamp": "2025-05-08T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 98777.74,
+        "volume": 2874.641072,
+        "timestamp": "2025-06-22T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 99299.45,
+        "volume": 3496.2028469999996,
+        "timestamp": "2025-05-08T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 99355.47,
+        "volume": 2874.641072,
+        "timestamp": "2025-06-22T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 99613.33,
+        "volume": 2766.650609,
+        "timestamp": "2025-06-23T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 99933.21,
+        "volume": 2874.641072,
+        "timestamp": "2025-06-22T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 100107.17,
+        "volume": 3496.2028469999996,
+        "timestamp": "2025-05-08T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 100331.2,
+        "volume": 2766.650609,
+        "timestamp": "2025-06-23T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 100510.94,
+        "volume": 2874.641072,
+        "timestamp": "2025-06-22T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 100718.37,
+        "volume": 3127.277792,
+        "timestamp": "2025-05-12T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 100914.88,
+        "volume": 3496.2028469999996,
+        "timestamp": "2025-05-08T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 101049.08,
+        "volume": 2766.650609,
+        "timestamp": "2025-06-23T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 101088.68,
+        "volume": 2874.641072,
+        "timestamp": "2025-06-22T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 101285.16,
+        "volume": 3127.277792,
+        "timestamp": "2025-05-12T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 101666.41,
+        "volume": 2874.641072,
+        "timestamp": "2025-06-22T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 101722.6,
+        "volume": 3496.2028469999996,
+        "timestamp": "2025-05-08T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 101766.95,
+        "volume": 2766.650609,
+        "timestamp": "2025-06-23T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 101851.94,
+        "volume": 3127.277792,
+        "timestamp": "2025-05-12T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 102000.0,
+        "volume": 3026.003524,
+        "timestamp": "2025-05-19T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 102244.15,
+        "volume": 2874.641072,
+        "timestamp": "2025-06-22T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 102315.14,
+        "volume": 2761.739907,
+        "timestamp": "2025-05-09T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 102418.73,
+        "volume": 3127.277792,
+        "timestamp": "2025-05-12T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 102484.83,
+        "volume": 2766.650609,
+        "timestamp": "2025-06-23T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 102530.32,
+        "volume": 3496.2028469999996,
+        "timestamp": "2025-05-08T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 102542.49,
+        "volume": 2761.739907,
+        "timestamp": "2025-05-09T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 102567.62,
+        "volume": 3026.003524,
+        "timestamp": "2025-05-19T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 102664.31,
+        "volume": 2618.0817340000003,
+        "timestamp": "2025-06-13T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 102769.84,
+        "volume": 2761.739907,
+        "timestamp": "2025-05-09T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 102821.88,
+        "volume": 2874.641072,
+        "timestamp": "2025-06-22T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 102985.52,
+        "volume": 3127.277792,
+        "timestamp": "2025-05-12T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 102997.19,
+        "volume": 2761.739907,
+        "timestamp": "2025-05-09T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 103054.89,
+        "volume": 2618.0817340000003,
+        "timestamp": "2025-06-13T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 103135.25,
+        "volume": 3026.003524,
+        "timestamp": "2025-05-19T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 103202.7,
+        "volume": 2766.650609,
+        "timestamp": "2025-06-23T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 103224.54,
+        "volume": 2761.739907,
+        "timestamp": "2025-05-09T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 103338.04,
+        "volume": 3496.2028469999996,
+        "timestamp": "2025-05-08T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 103399.62,
+        "volume": 2874.641072,
+        "timestamp": "2025-06-22T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 103445.47,
+        "volume": 2618.0817340000003,
+        "timestamp": "2025-06-13T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 103451.9,
+        "volume": 2761.739907,
+        "timestamp": "2025-05-09T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 103552.3,
+        "volume": 3127.277792,
+        "timestamp": "2025-05-12T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 103679.25,
+        "volume": 2761.739907,
+        "timestamp": "2025-05-09T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 103702.87,
+        "volume": 3026.003524,
+        "timestamp": "2025-05-19T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 103836.05,
+        "volume": 2618.0817340000003,
+        "timestamp": "2025-06-13T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 103906.6,
+        "volume": 2761.739907,
+        "timestamp": "2025-05-09T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 103920.58,
+        "volume": 2766.650609,
+        "timestamp": "2025-06-23T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 104119.09,
+        "volume": 3127.277792,
+        "timestamp": "2025-05-12T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 104133.95,
+        "volume": 2761.739907,
+        "timestamp": "2025-05-09T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 104145.76,
+        "volume": 3496.2028469999996,
+        "timestamp": "2025-05-08T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 104226.63,
+        "volume": 2618.0817340000003,
+        "timestamp": "2025-06-13T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 104270.5,
+        "volume": 3026.003524,
+        "timestamp": "2025-05-19T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 104361.3,
+        "volume": 2761.739907,
+        "timestamp": "2025-05-09T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 104617.21,
+        "volume": 2618.0817340000003,
+        "timestamp": "2025-06-13T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 104638.45,
+        "volume": 2766.650609,
+        "timestamp": "2025-06-23T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 104685.88,
+        "volume": 3127.277792,
+        "timestamp": "2025-05-12T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 104838.12,
+        "volume": 3026.003524,
+        "timestamp": "2025-05-19T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 105007.79,
+        "volume": 2618.0817340000003,
+        "timestamp": "2025-06-13T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 105252.66,
+        "volume": 3127.277792,
+        "timestamp": "2025-05-12T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 105356.33,
+        "volume": 2766.650609,
+        "timestamp": "2025-06-23T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 105398.37,
+        "volume": 2618.0817340000003,
+        "timestamp": "2025-06-13T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 105405.75,
+        "volume": 3026.003524,
+        "timestamp": "2025-05-19T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 105788.95,
+        "volume": 2618.0817340000003,
+        "timestamp": "2025-06-13T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 105819.45,
+        "volume": 3127.277792,
+        "timestamp": "2025-05-12T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 105973.37,
+        "volume": 3026.003524,
+        "timestamp": "2025-05-19T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 106074.2,
+        "volume": 2766.650609,
+        "timestamp": "2025-06-23T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 106100.01,
+        "volume": 4553.1040345,
+        "timestamp": "2025-05-21T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 106179.53,
+        "volume": 2618.0817340000003,
+        "timestamp": "2025-06-13T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 106541.0,
+        "volume": 3026.003524,
+        "timestamp": "2025-05-19T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 106621.94,
+        "volume": 4553.1040345,
+        "timestamp": "2025-05-21T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 106800.0,
+        "volume": 3173.772309,
+        "timestamp": "2025-05-23T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 107108.62,
+        "volume": 3026.003524,
+        "timestamp": "2025-05-19T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 107143.87,
+        "volume": 4553.1040345,
+        "timestamp": "2025-05-21T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 107355.56,
+        "volume": 3173.772309,
+        "timestamp": "2025-05-23T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 107665.8,
+        "volume": 4553.1040345,
+        "timestamp": "2025-05-21T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 107911.11,
+        "volume": 3173.772309,
+        "timestamp": "2025-05-23T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 108187.73,
+        "volume": 4553.1040345,
+        "timestamp": "2025-05-21T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 108466.67,
+        "volume": 3173.772309,
+        "timestamp": "2025-05-23T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 108709.66,
+        "volume": 4553.1040345,
+        "timestamp": "2025-05-21T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 109022.22,
+        "volume": 3173.772309,
+        "timestamp": "2025-05-23T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 109177.37,
+        "volume": 3163.0773130000002,
+        "timestamp": "2025-05-22T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 109231.59,
+        "volume": 4553.1040345,
+        "timestamp": "2025-05-21T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 109488.77,
+        "volume": 3163.0773130000002,
+        "timestamp": "2025-05-22T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 109577.78,
+        "volume": 3173.772309,
+        "timestamp": "2025-05-23T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 109753.52,
+        "volume": 4553.1040345,
+        "timestamp": "2025-05-21T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 109800.18,
+        "volume": 3163.0773130000002,
+        "timestamp": "2025-05-22T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 110111.58,
+        "volume": 3163.0773130000002,
+        "timestamp": "2025-05-22T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 110133.33,
+        "volume": 3173.772309,
+        "timestamp": "2025-05-23T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 110275.45,
+        "volume": 4553.1040345,
+        "timestamp": "2025-05-21T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 110422.98,
+        "volume": 3163.0773130000002,
+        "timestamp": "2025-05-22T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 110500.0,
+        "volume": 2488.3450665,
+        "timestamp": "2025-07-10T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 110688.89,
+        "volume": 3173.772309,
+        "timestamp": "2025-05-23T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 110734.39,
+        "volume": 3163.0773130000002,
+        "timestamp": "2025-05-22T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 110797.38,
+        "volume": 4553.1040345,
+        "timestamp": "2025-05-21T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 111045.79,
+        "volume": 3163.0773130000002,
+        "timestamp": "2025-05-22T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 111207.56,
+        "volume": 2488.3450665,
+        "timestamp": "2025-07-10T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 111244.44,
+        "volume": 3173.772309,
+        "timestamp": "2025-05-23T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 111357.19,
+        "volume": 3163.0773130000002,
+        "timestamp": "2025-05-22T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 111668.6,
+        "volume": 3163.0773130000002,
+        "timestamp": "2025-05-22T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 111800.0,
+        "volume": 3173.772309,
+        "timestamp": "2025-05-23T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 111915.11,
+        "volume": 2488.3450665,
+        "timestamp": "2025-07-10T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 111980.0,
+        "volume": 3163.0773130000002,
+        "timestamp": "2025-05-22T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 112622.67,
+        "volume": 2488.3450665,
+        "timestamp": "2025-07-10T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 113330.22,
+        "volume": 2488.3450665,
+        "timestamp": "2025-07-10T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 114037.78,
+        "volume": 2488.3450665,
+        "timestamp": "2025-07-10T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 114723.16,
+        "volume": 3840.634873,
+        "timestamp": "2025-07-25T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 114745.33,
+        "volume": 2488.3450665,
+        "timestamp": "2025-07-10T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 115137.43,
+        "volume": 3840.634873,
+        "timestamp": "2025-07-25T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 115222.22,
+        "volume": 2587.3521148,
+        "timestamp": "2025-07-11T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 115452.89,
+        "volume": 2488.3450665,
+        "timestamp": "2025-07-10T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 115551.7,
+        "volume": 3840.634873,
+        "timestamp": "2025-07-25T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 115627.53,
+        "volume": 2587.3521148,
+        "timestamp": "2025-07-11T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 115736.92,
+        "volume": 3201.846083,
+        "timestamp": "2025-07-15T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 115965.96,
+        "volume": 3840.634873,
+        "timestamp": "2025-07-25T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 116032.83,
+        "volume": 2587.3521148,
+        "timestamp": "2025-07-11T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 116160.44,
+        "volume": 2488.3450665,
+        "timestamp": "2025-07-10T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 116204.02,
+        "volume": 3201.846083,
+        "timestamp": "2025-07-15T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 116380.23,
+        "volume": 3840.634873,
+        "timestamp": "2025-07-25T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 116438.14,
+        "volume": 2587.3521148,
+        "timestamp": "2025-07-11T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 116671.12,
+        "volume": 3201.846083,
+        "timestamp": "2025-07-15T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 116794.5,
+        "volume": 3840.634873,
+        "timestamp": "2025-07-25T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 116843.45,
+        "volume": 2587.3521148,
+        "timestamp": "2025-07-11T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 116868.0,
+        "volume": 2488.3450665,
+        "timestamp": "2025-07-10T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 117138.22,
+        "volume": 3201.846083,
+        "timestamp": "2025-07-15T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 117208.77,
+        "volume": 3840.634873,
+        "timestamp": "2025-07-25T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 117248.75,
+        "volume": 2587.3521148,
+        "timestamp": "2025-07-11T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 117605.32,
+        "volume": 3201.846083,
+        "timestamp": "2025-07-15T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 117623.03,
+        "volume": 3840.634873,
+        "timestamp": "2025-07-25T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 117654.06,
+        "volume": 2587.3521148,
+        "timestamp": "2025-07-11T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 118037.3,
+        "volume": 3840.634873,
+        "timestamp": "2025-07-25T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 118059.37,
+        "volume": 2587.3521148,
+        "timestamp": "2025-07-11T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 118072.43,
+        "volume": 3201.846083,
+        "timestamp": "2025-07-15T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 118451.57,
+        "volume": 3840.634873,
+        "timestamp": "2025-07-25T07:00:00",
+        "significance": "high"
+      },
+      {
+        "price": 118464.67,
+        "volume": 2587.3521148,
+        "timestamp": "2025-07-11T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 118539.53,
+        "volume": 3201.846083,
+        "timestamp": "2025-07-15T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 118869.98,
+        "volume": 2587.3521148,
+        "timestamp": "2025-07-11T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 118905.18,
+        "volume": 2726.9348877,
+        "timestamp": "2025-07-14T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 119006.63,
+        "volume": 3201.846083,
+        "timestamp": "2025-07-15T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 119384.38,
+        "volume": 2726.9348877,
+        "timestamp": "2025-07-14T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 119473.73,
+        "volume": 3201.846083,
+        "timestamp": "2025-07-15T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 119863.58,
+        "volume": 2726.9348877,
+        "timestamp": "2025-07-14T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 119940.83,
+        "volume": 3201.846083,
+        "timestamp": "2025-07-15T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 120342.79,
+        "volume": 2726.9348877,
+        "timestamp": "2025-07-14T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 120821.99,
+        "volume": 2726.9348877,
+        "timestamp": "2025-07-14T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 121301.19,
+        "volume": 2726.9348877,
+        "timestamp": "2025-07-14T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 121780.39,
+        "volume": 2726.9348877,
+        "timestamp": "2025-07-14T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 122259.6,
+        "volume": 2726.9348877,
+        "timestamp": "2025-07-14T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 122738.8,
+        "volume": 2726.9348877,
+        "timestamp": "2025-07-14T07:00:00",
+        "significance": "medium"
+      },
+      {
+        "price": 123218.0,
+        "volume": 2726.9348877,
+        "timestamp": "2025-07-14T07:00:00",
+        "significance": "medium"
+      }
+    ],
+    "data_start_time": "2025-04-26T07:00:00",
+    "data_end_time": "2025-08-03T07:00:00"
+  },
+  "technical_indicators": [
+    {
+      "name": "RSI",
+      "value": 76.22004012247916,
+      "signal": "bullish",
+      "strength": 0.5244008024495832,
+      "timestamp": "2025-08-03T07:00:00",
+      "data_start_time": "2025-04-26T07:00:00",
+      "data_end_time": "2025-08-03T07:00:00"
+    },
+    {
+      "name": "MACD",
+      "value": 401.05527627472475,
+      "signal": "bearish",
+      "strength": 1.0,
+      "timestamp": "2025-08-03T07:00:00",
+      "data_start_time": "2025-04-26T07:00:00",
+      "data_end_time": "2025-08-03T07:00:00"
+    },
+    {
+      "name": "BOLLINGER_BANDS",
+      "value": 0.0232003161253337,
+      "signal": "neutral",
+      "strength": 0.9535993677493326,
+      "timestamp": "2025-08-03T07:00:00",
+      "data_start_time": "2025-04-26T07:00:00",
+      "data_end_time": "2025-08-03T07:00:00"
+    }
+  ],
+  "patterns": [
+    {
+      "type": "double_bottom",
+      "confidence": 0.8,
+      "price_levels": {
+        "support": 105573.74,
+        "resistance": 111696.21
+      },
+      "description": "Double bottom at 105573.74 with 5.8% peak",
+      "timestamp": "2025-08-03T15:38:17.002590",
+      "data_start_time": "2025-07-04T15:38:17.002590",
+      "data_end_time": "2025-08-03T15:38:17.002590"
+    }
+  ],
+  "collection_stats": {
+    "indicators_calculated": 3,
+    "patterns_detected": 1,
+    "data_sources_used": 2
+  }
+}
