@@ -1,9 +1,9 @@
 #!/bin/bash
 set -euo pipefail
-
+#    gcloud compute ssh fpds-mongodb-vm --zone=us-central1-c --project=cloudmatos-saas-demo
 ### CONFIGURATION ###
 PROJECT_ID="cloudmatos-saas-demo"
-ZONE="us-central1-a"
+ZONE="us-central1-c"
 INSTANCE_NAME="fpds-crawler-vm"
 MACHINE_TYPE="e2-standard-4"  # 4 vCPUs, 16 GB memory for better performance
 DISK_SIZE="200GB"
@@ -30,7 +30,7 @@ gcloud compute instances create "$INSTANCE_NAME" \
     --metadata-from-file=startup-script=script/setup_vm.sh
 
 echo "⏳ VM created successfully. Waiting for startup script to begin..."
-sleep 30
+sleep 60
 
 ### Monitor setup progress ###
 echo "📊 Monitoring setup progress..."

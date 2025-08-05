@@ -227,7 +227,7 @@ class FPDSHighPerformanceExtractor:
 
             
             # Build query
-            query = f"AWARD_COMPLETION_DATE:[{start_date},{end_date}]"
+            query = f"ESTIMATED_COMPLETION_DATE:[{start_date},{end_date}]"
             
             if additional_filters:
                 for key, value in additional_filters.items():

@@ -32,7 +32,7 @@ class FPDSEnhancedExtractor:
         self.fetch_all = False
 
     def fetch_total_record(self, start_date, end_date, additional_filters):
-        query = f"AWARD_COMPLETION_DATE:[{start_date},{end_date}]"
+        query = f"ESTIMATED_COMPLETION_DATE:[{start_date},{end_date}]"
         if additional_filters:
             for key, value in additional_filters.items():
                 query += f" {key}:\"{value}\""
@@ -69,7 +69,7 @@ class FPDSEnhancedExtractor:
         """
 
         # Build search query
-        query = f"AWARD_COMPLETION_DATE:[{start_date},{end_date}]"
+        query = f"ESTIMATED_COMPLETION_DATE:[{start_date},{end_date}]"
 
         if additional_filters:
             for key, value in additional_filters.items():
