@@ -3,7 +3,7 @@ set -euo pipefail
 #    gcloud compute ssh fpds-mongodb-vm --zone=us-central1-c --project=cloudmatos-saas-demo
 ### CONFIGURATION ###
 PROJECT_ID="cloudmatos-saas-demo"
-ZONE="us-central1-c"
+ZONE="us-east1-b"
 INSTANCE_NAME="fpds-crawler-vm"
 MACHINE_TYPE="e2-standard-4"  # 4 vCPUs, 16 GB memory for better performance
 DISK_SIZE="200GB"

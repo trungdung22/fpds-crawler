@@ -313,7 +313,7 @@ class FPDSHighPerformanceExtractor:
                        f"Elapsed: {elapsed}")
     
     def _track_failed_request(self, request_type: str, page_num: int, start_date: str, end_date: str, 
-                             additional_filters: dict, contract: dict = None):
+                             additional_filters: dict, contract: dict = None, error_info: str = None):
         """Track failed requests for later retry"""
         
         with self.failed_lock:
@@ -324,7 +324,8 @@ class FPDSHighPerformanceExtractor:
                 'end_date': end_date,
                 'additional_filters': additional_filters,
                 'timestamp': datetime.now().isoformat(),
-                'contract': contract if contract else None
+                'contract': contract if contract else None,
+                'error_info': error_info
             }
             
             self.failed_requests.append(failed_request)

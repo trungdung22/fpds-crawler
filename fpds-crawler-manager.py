@@ -71,10 +71,23 @@ class FPDSServiceManager:
     def create_service_file(self, params: dict):
         """Create systemd service file with parameters"""
         
+        # Create required directories
+        result_data_dir = "/home/dungdo/fpds-crawler/result_data"
+        failed_request_dir = "/home/dungdo/fpds-crawler/failed_request_data"
+        
+        os.makedirs(result_data_dir, exist_ok=True)
+        os.makedirs(failed_request_dir, exist_ok=True)
+        
+        # Set permissions
+        subprocess.run(['chown', 'dungdo:dungdo', result_data_dir], check=False)
+        subprocess.run(['chown', 'dungdo:dungdo', failed_request_dir], check=False)
+        subprocess.run(['chmod', '755', result_data_dir], check=False)
+        subprocess.run(['chmod', '755', failed_request_dir], check=False)
+        
         # Build command line arguments
         cmd_args = [
             "/usr/bin/python3",
-            "fpds_high_performance.py"
+            "/home/dungdo/fpds-crawler/fpds_high_performance.py"
         ]
         
         # Add parameters
@@ -99,6 +112,9 @@ class FPDSServiceManager:
         if params.get('max_retries'):
             cmd_args.extend(['--max-retries', str(params['max_retries'])])
         
+        # Ensure absolute path for the script
+        script_path = os.path.join("/home/dungdo/fpds-crawler", "fpds_high_performance.py")
+        cmd_args[1] = script_path  # Replace the script name with full path
         exec_start = ' '.join(cmd_args)
         
         # Service file template
@@ -131,12 +147,13 @@ LimitNOFILE=65536
 NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=strict
-ProtectHome=true
-ReadWritePaths=/home/dungdo/fpds-crawler/result_data,/home/dungdo/fpds-crawler/failed_request_data
+ProtectHome=false
+# ReadWritePaths=/home/dungdo/fpds-crawler/result_data,/home/dungdo/fpds-crawler/failed_request_data
+# InaccessiblePaths=/home/dungdo/fpds-crawler/result_data,/home/dungdo/fpds-crawler/failed_request_data
 
 # Logging
-StandardOutput=append:{self.log_file}
-StandardError=append:{self.error_log_file}
+StandardOutput=journal
+StandardError=journal
 
 [Install]
 WantedBy=multi-user.target
