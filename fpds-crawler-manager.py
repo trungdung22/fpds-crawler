@@ -24,25 +24,40 @@ class FPDSServiceManager:
         self.config_file = "/etc/fpds-crawler/config.json"
     
     def parse_month_year(self, month_year_str: str) -> tuple:
-        """Parse month/year format (e.g., '1/2026') and return start/end dates for the month"""
+        """Parse month/year format (e.g., '1/2026' or '1,2/2026') and return start/end dates for the range"""
         try:
             # Parse month/year format
             if '/' in month_year_str:
-                month, year = month_year_str.split('/')
-                month = int(month)
+                month_part, year = month_year_str.split('/')
                 year = int(year)
             else:
-                raise ValueError("Invalid format. Use M/YYYY (e.g., 1/2026)")
+                raise ValueError("Invalid format. Use M/YYYY or M1,M2/YYYY (e.g., 1/2026 or 1,2/2026)")
             
-            # Validate month and year
-            if month < 1 or month > 12:
-                raise ValueError("Month must be between 1 and 12")
+            # Validate year
             if year < 1900 or year > 2100:
                 raise ValueError("Year must be between 1900 and 2100")
             
-            # Get first and last day of the month
-            first_day = datetime(year, month, 1)
-            last_day = datetime(year, month, calendar.monthrange(year, month)[1])
+            # Parse months (can be single month or comma-separated list)
+            if ',' in month_part:
+                # Multiple months: "1,2,3/2026"
+                months = [int(m.strip()) for m in month_part.split(',')]
+                # Sort months to ensure proper order
+                months.sort()
+            else:
+                # Single month: "1/2026"
+                months = [int(month_part)]
+            
+            # Validate all months
+            for month in months:
+                if month < 1 or month > 12:
+                    raise ValueError(f"Month {month} must be between 1 and 12")
+            
+            # Get first day of first month and last day of last month
+            first_month = months[0]
+            last_month = months[-1]
+            
+            first_day = datetime(year, first_month, 1)
+            last_day = datetime(year, last_month, calendar.monthrange(year, last_month)[1])
             
             # Format as YYYY/MM/DD
             start_date = first_day.strftime('%Y/%m/%d')
@@ -51,7 +66,7 @@ class FPDSServiceManager:
             return start_date, end_date
             
         except (ValueError, IndexError) as e:
-            raise ValueError(f"Invalid month/year format: {month_year_str}. Use M/YYYY (e.g., 1/2026)") from e
+            raise ValueError(f"Invalid month/year format: {month_year_str}. Use M/YYYY or M1,M2/YYYY (e.g., 1/2026 or 1,2/2026)") from e
         
     def create_service_file(self, params: dict):
         """Create systemd service file with parameters"""
@@ -95,11 +110,11 @@ Documentation=https://github.com/trungdung22/fpds-crawler
 
 [Service]
 Type=simple
-User=fpds-crawler
-Group=fpds-crawler
-WorkingDirectory=/home/fpds-crawler/fpds-crawler
+User=dungdo
+Group=dungdo
+WorkingDirectory=/home/dungdo/fpds-crawler
 Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-Environment=PYTHONPATH=/home/fpds-crawler/fpds-crawler
+Environment=PYTHONPATH=/home/dungdo/fpds-crawler
 ExecStart={exec_start}
 Restart=on-failure
 RestartSec=30
@@ -117,7 +132,7 @@ NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=strict
 ProtectHome=true
-ReadWritePaths=/home/fpds-crawler/fpds-crawler/result_data,/home/fpds-crawler/fpds-crawler/failed_request_data
+ReadWritePaths=/home/dungdo/fpds-crawler/result_data,/home/dungdo/fpds-crawler/failed_request_data
 
 # Logging
 StandardOutput=append:{self.log_file}
@@ -313,7 +328,7 @@ def main():
     install_parser.add_argument('--target-records', type=int, default=2000000, help='Target records to extract')
     install_parser.add_argument('--workers', type=int, default=16, help='Number of worker threads')
     install_parser.add_argument('--batch-size', type=int, default=100, help='Batch size for processing')
-    install_parser.add_argument('--month-year', default='1/2026', help='Month/Year to process (M/YYYY format, e.g., 1/2026)')
+    install_parser.add_argument('--month-year', default='1/2026', help='Month/Year to process (M/YYYY or M1,M2/YYYY format, e.g., 1/2026 or 1,2/2026)')
     install_parser.add_argument('--initial-delay', type=float, default=0.5, help='Initial delay between requests')
     install_parser.add_argument('--agency', help='Filter by agency name')
     install_parser.add_argument('--vendor', help='Filter by vendor name')
@@ -345,7 +360,6 @@ def main():
     if not args.command:
         parser.print_help()
         return
-    
     manager = FPDSServiceManager()
     
     if args.command == 'install':

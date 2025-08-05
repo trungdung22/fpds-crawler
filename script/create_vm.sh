@@ -26,79 +26,11 @@ gcloud compute instances create "$INSTANCE_NAME" \
     --boot-disk-type=pd-standard \
     --image-family="$IMAGE_FAMILY" \
     --image-project="$IMAGE_PROJECT" \
-    --tags="$FIREWALL_TAG" \
-    --metadata-from-file=startup-script=script/setup_vm.sh
+    --tags="$FIREWALL_TAG"
 
 echo "⏳ VM created successfully. Waiting for startup script to begin..."
-sleep 60
+sleep 90
 
-### Monitor setup progress ###
-echo "📊 Monitoring setup progress..."
-echo "Press Ctrl+C to stop monitoring (setup will continue in background)"
-echo ""
-
-# Function to check if VM is ready for SSH
-check_vm_ready() {
-    gcloud compute ssh "$INSTANCE_NAME" \
-        --project="$PROJECT_ID" \
-        --zone="$ZONE" \
-        --command="echo 'VM is ready'" \
-        --quiet >/dev/null 2>&1
-}
-
-# Function to get startup script logs
-get_startup_logs() {
-    gcloud compute ssh "$INSTANCE_NAME" \
-        --project="$PROJECT_ID" \
-        --zone="$ZONE" \
-        --command="tail -n 50 /var/log/syslog | grep startup-script || echo 'No startup logs yet...'" \
-        --quiet 2>/dev/null || echo "VM not ready for SSH yet..."
-}
-
-# Wait for VM to be ready and monitor logs
-echo "⏳ Waiting for VM to be ready for SSH..."
-while ! check_vm_ready; do
-    echo "🔄 VM is still starting up... (waiting 30s)"
-    sleep 30
-done
-
-echo "✅ VM is ready! Monitoring setup progress..."
-echo ""
-
-# Monitor setup progress with timestamps
-start_time=$(date +%s)
-last_log_line=""
-
-while true; do
-    current_logs=$(get_startup_logs)
-    
-    # Only print new log lines
-    if [ "$current_logs" != "$last_log_line" ] && [ -n "$current_logs" ]; then
-        current_time=$(date '+%H:%M:%S')
-        elapsed=$(( $(date +%s) - start_time ))
-        elapsed_min=$((elapsed / 60))
-        elapsed_sec=$((elapsed % 60))
-        
-        echo "[$current_time] (${elapsed_min}m ${elapsed_sec}s) $current_logs"
-        last_log_line="$current_logs"
-    fi
-    
-    # Check if setup is complete
-    if echo "$current_logs" | grep -q "FPDS Crawler VM setup completed successfully"; then
-        echo ""
-        echo "🎉 Setup completed successfully!"
-        break
-    fi
-    
-    # Check for errors
-    if echo "$current_logs" | grep -q "ERROR\|FAILED\|failed"; then
-        echo ""
-        echo "❌ Setup encountered an error. Check logs for details."
-        break
-    fi
-    
-    sleep 10
-done
 
 ### Create firewall rule to allow SSH and HTTP ###
 echo "🔧 Creating firewall rules..."

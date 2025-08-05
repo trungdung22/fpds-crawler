@@ -48,14 +48,9 @@ python3 -m pip install \
     psutil \
     python-dateutil
 
-# Create fpds-crawler user
-echo "Creating fpds-crawler user..."
-useradd -m -s /bin/bash fpds-crawler || echo "User fpds-crawler already exists"
-
-# Switch to fpds-crawler user and setup
-echo "Setting up fpds-crawler user environment..."
-sudo -u fpds-crawler bash << 'EOF'
-cd /home/fpds-crawler
+# Setup FPDS crawler in /home/dungdo
+echo "Setting up FPDS crawler in /home/dungdo..."
+cd /home/dungdo
 
 # Clone the repository
 echo "Cloning FPDS crawler repository..."
@@ -72,20 +67,19 @@ chmod 755 fpds-crawler/failed_request_data
 
 # Make scripts executable
 chmod +x fpds-crawler/*.py
-EOF
 
 # Create log directories and set permissions
 echo "📝 Setting up log directories..."
 mkdir -p /var/log
 touch /var/log/fpds-crawler.log
 touch /var/log/fpds-crawler.error.log
-chown fpds-crawler:fpds-crawler /var/log/fpds-crawler*.log
+chown dungdo:dungdo /var/log/fpds-crawler*.log
 chmod 644 /var/log/fpds-crawler*.log
 
 # Create config directory
 echo "⚙️ Setting up config directory..."
 mkdir -p /etc/fpds-crawler
-chown fpds-crawler:fpds-crawler /etc/fpds-crawler
+chown dungdo:dungdo /etc/fpds-crawler
 
 # Secure SSH configuration for gcloud compute ssh
 # echo "🔒 Configuring SSH for gcloud compute ssh..."
@@ -95,7 +89,7 @@ chown fpds-crawler:fpds-crawler /etc/fpds-crawler
 
 # Test Python installation
 echo "🧪 Testing Python installation..."
-sudo -u fpds-crawler python3 -c "
+sudo -u dungdo python3 -c "
 import requests
 import bs4
 import lxml
@@ -105,7 +99,7 @@ print('✅ All required packages installed successfully!')
 
 # Create a simple test script
 echo "📋 Creating test script..."
-cat > /home/fpds-crawler/test_setup.py << 'EOF'
+cat > /home/dungdo/test_setup.py << 'EOF'
 #!/usr/bin/env python3
 import sys
 import requests
@@ -170,16 +164,16 @@ if __name__ == "__main__":
         sys.exit(1)
 EOF
 
-chmod +x /home/fpds-crawler/test_setup.py
-chown fpds-crawler:fpds-crawler /home/fpds-crawler/test_setup.py
+chmod +x /home/dungdo/test_setup.py
+chown dungdo:dungdo /home/dungdo/test_setup.py
 
 # Run test
 echo "🧪 Running setup test..."
-sudo -u fpds-crawler python3 /home/fpds-crawler/test_setup.py
+sudo -u dungdo python3 /home/dungdo/test_setup.py
 
 # Create usage instructions
 echo "📖 Creating usage instructions..."
-cat > /home/fpds-crawler/README_VM_SETUP.md << 'EOF'
+cat > /home/dungdo/README_VM_SETUP.md << 'EOF'
 # FPDS Crawler VM Setup Complete
 
 ## Quick Start
@@ -220,7 +214,7 @@ python3 fpds_high_performance.py --target-records 10000 --workers 8
 
 ## Files and Directories
 
-- `/home/fpds-crawler/fpds-crawler/` - Main application directory
+- `/home/dungdo/fpds-crawler/` - Main application directory
 - `/var/log/fpds-crawler.log` - Application logs
 - `/var/log/fpds-crawler.error.log` - Error logs
 - `/etc/fpds-crawler/config.json` - Service configuration
@@ -234,8 +228,8 @@ python3 fpds_high_performance.py --target-records 10000 --workers 8
 - Resource usage: `sudo python3 fpds-crawler-manager.py metrics`
 EOF
 
-chown fpds-crawler:fpds-crawler /home/fpds-crawler/README_VM_SETUP.md
+chown dungdo:dungdo /home/dungdo/README_VM_SETUP.md
 
 echo "✅ FPDS Crawler VM setup completed successfully!"
-echo "📖 Check /home/fpds-crawler/README_VM_SETUP.md for usage instructions"
+echo "📖 Check /home/dungdo/README_VM_SETUP.md for usage instructions"
 echo "🧪 Run 'python3 test_setup.py' to verify the installation" 

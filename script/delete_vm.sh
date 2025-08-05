@@ -3,7 +3,7 @@ set -euo pipefail
 
 ### CONFIGURATION ###
 PROJECT_ID="cloudmatos-saas-demo"
-ZONE="us-central1-a"
+ZONE="us-central1-c"
 INSTANCE_NAME="fpds-crawler-vm"
 FIREWALL_TAG="fpds-crawler"
 FIREWALL_RULE_NAME="allow-common-${FIREWALL_TAG}"
