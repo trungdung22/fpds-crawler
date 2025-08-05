@@ -11,6 +11,7 @@ import os
 import time
 from datetime import datetime, timedelta
 from pathlib import Path
+import calendar
 
 class FPDSServiceManager:
     """Manages the FPDS crawler systemd service"""
@@ -21,6 +22,36 @@ class FPDSServiceManager:
         self.log_file = "/var/log/fpds-crawler.log"
         self.error_log_file = "/var/log/fpds-crawler.error.log"
         self.config_file = "/etc/fpds-crawler/config.json"
+    
+    def parse_month_year(self, month_year_str: str) -> tuple:
+        """Parse month/year format (e.g., '1/2026') and return start/end dates for the month"""
+        try:
+            # Parse month/year format
+            if '/' in month_year_str:
+                month, year = month_year_str.split('/')
+                month = int(month)
+                year = int(year)
+            else:
+                raise ValueError("Invalid format. Use M/YYYY (e.g., 1/2026)")
+            
+            # Validate month and year
+            if month < 1 or month > 12:
+                raise ValueError("Month must be between 1 and 12")
+            if year < 1900 or year > 2100:
+                raise ValueError("Year must be between 1900 and 2100")
+            
+            # Get first and last day of the month
+            first_day = datetime(year, month, 1)
+            last_day = datetime(year, month, calendar.monthrange(year, month)[1])
+            
+            # Format as YYYY/MM/DD
+            start_date = first_day.strftime('%Y/%m/%d')
+            end_date = last_day.strftime('%Y/%m/%d')
+            
+            return start_date, end_date
+            
+        except (ValueError, IndexError) as e:
+            raise ValueError(f"Invalid month/year format: {month_year_str}. Use M/YYYY (e.g., 1/2026)") from e
         
     def create_service_file(self, params: dict):
         """Create systemd service file with parameters"""
@@ -279,15 +310,14 @@ def main():
     
     # Install command
     install_parser = subparsers.add_parser('install', help='Install service with parameters')
-    install_parser.add_argument('--target-records', type=int, default=20000, help='Target records to extract')
+    install_parser.add_argument('--target-records', type=int, default=2000000, help='Target records to extract')
     install_parser.add_argument('--workers', type=int, default=16, help='Number of worker threads')
     install_parser.add_argument('--batch-size', type=int, default=100, help='Batch size for processing')
-    install_parser.add_argument('--start-date', default='2025/07/29', help='Start date (YYYY/MM/DD)')
-    install_parser.add_argument('--end-date', default='2025/07/30', help='End date (YYYY/MM/DD)')
+    install_parser.add_argument('--month-year', default='1/2026', help='Month/Year to process (M/YYYY format, e.g., 1/2026)')
     install_parser.add_argument('--initial-delay', type=float, default=0.5, help='Initial delay between requests')
     install_parser.add_argument('--agency', help='Filter by agency name')
     install_parser.add_argument('--vendor', help='Filter by vendor name')
-    install_parser.add_argument('--enable-retry', action='store_true', help='Enable automatic retry')
+    install_parser.add_argument('--enable-retry', action='store_true', default=True, help='Enable automatic retry (default: True)')
     install_parser.add_argument('--max-retries', type=int, default=3, help='Maximum retry attempts')
     
     # Service control commands
@@ -319,13 +349,20 @@ def main():
     manager = FPDSServiceManager()
     
     if args.command == 'install':
+        # Parse month/year and convert to start/end dates
+        try:
+            start_date, end_date = manager.parse_month_year(args.month_year)
+        except ValueError as e:
+            print(f"Error: {e}")
+            sys.exit(1)
+        
         # Convert args to dict
         params = {
             'target_records': args.target_records,
             'workers': args.workers,
             'batch_size': args.batch_size,
-            'start_date': args.start_date,
-            'end_date': args.end_date,
+            'start_date': start_date,
+            'end_date': end_date,
             'initial_delay': args.initial_delay,
             'agency': args.agency,
             'vendor': args.vendor,
@@ -338,6 +375,7 @@ def main():
         manager.create_service_file(params)
         manager.enable_service()
         print("\nService installed successfully!")
+        print(f"Processing period: {start_date} to {end_date}")
         print("Use 'sudo fpds-crawler-manager.py start' to start the service")
         
     elif args.command == 'start':

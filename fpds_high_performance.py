@@ -510,13 +510,14 @@ def main():
     print(f"Retry enabled: {args.enable_retry}")
     if args.enable_retry:
         print(f"Max retries: {args.max_retries}")
-    
+    failed_folder = 'failed_request_data'
+    result_folder = 'result_data'
+    os.makedirs(failed_folder, exist_ok=True)
+    os.makedirs(result_folder, exist_ok=True)
     if args.retry_failed:
         print("=" * 60)
         print("RETRYING ALL FAILED REQUESTS IN failed_request_data/")
         print("=" * 60)
-        failed_folder = 'failed_request_data'
-        result_folder = 'result_data'
         all_failed = load_failed_requests_from_folder(failed_folder)
         if not all_failed:
             print("No failed requests found in folder.")

@@ -5,18 +5,18 @@ set -euo pipefail
 exec 1> >(tee -a /var/log/syslog)
 exec 2> >(tee -a /var/log/syslog >&2)
 
-echo "🚀 Starting FPDS Crawler VM setup..."
+echo "Starting FPDS Crawler VM setup..."
 
 # Update system packages
-echo "📦 Updating system packages..."
+echo "Updating system packages..."
 apt-get update -y
 
 # Install Python3 and pip3
-echo "🐍 Installing Python3 and pip3..."
+echo "Installing Python3 and pip3..."
 apt-get install -y python3 python3-pip python3-venv
 
 # Install system dependencies
-echo "🔧 Installing system dependencies..."
+echo "Installing system dependencies..."
 apt-get install -y \
     git \
     curl \
@@ -31,11 +31,11 @@ apt-get install -y \
     zlib1g-dev
 
 # Upgrade pip
-echo "⬆️ Upgrading pip..."
+echo "⬆Upgrading pip..."
 python3 -m pip install --upgrade pip
 
 # Install Python packages
-echo "📚 Installing Python packages..."
+echo "Installing Python packages..."
 python3 -m pip install \
     requests \
     beautifulsoup4 \
@@ -49,16 +49,16 @@ python3 -m pip install \
     python-dateutil
 
 # Create fpds-crawler user
-echo "👤 Creating fpds-crawler user..."
+echo "Creating fpds-crawler user..."
 useradd -m -s /bin/bash fpds-crawler || echo "User fpds-crawler already exists"
 
 # Switch to fpds-crawler user and setup
-echo "📁 Setting up fpds-crawler user environment..."
+echo "Setting up fpds-crawler user environment..."
 sudo -u fpds-crawler bash << 'EOF'
 cd /home/fpds-crawler
 
 # Clone the repository
-echo "📥 Cloning FPDS crawler repository..."
+echo "Cloning FPDS crawler repository..."
 git clone https://github.com/trungdung22/fpds-crawler.git || echo "Repository already exists"
 
 # Create necessary directories
@@ -88,10 +88,10 @@ mkdir -p /etc/fpds-crawler
 chown fpds-crawler:fpds-crawler /etc/fpds-crawler
 
 # Secure SSH configuration for gcloud compute ssh
-echo "🔒 Configuring SSH for gcloud compute ssh..."
-sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
-sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config
-systemctl restart ssh
+# echo "🔒 Configuring SSH for gcloud compute ssh..."
+# sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+# sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config
+# systemctl restart ssh
 
 # Test Python installation
 echo "🧪 Testing Python installation..."
