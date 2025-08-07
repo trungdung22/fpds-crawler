@@ -316,6 +316,15 @@ class FPDSEnhancedExtractor:
                     return value if value else None
                 return None
 
+            def extract_textarea_value(textarea_elem) -> Optional[str]:
+                """Extract value from textarea element"""
+                if textarea_elem.has_attr("value"):
+                    value = textarea_elem["value"].strip()
+                    return value if value else None
+                # Also check the text content
+                text_content = textarea_elem.get_text(strip=True)
+                return text_content if text_content else None
+
             def extract_select_value(select_elem) -> Optional[str]:
                 """Extract selected value from select element"""
                 selected_option = select_elem.find("option", selected=True)
@@ -390,6 +399,99 @@ class FPDSEnhancedExtractor:
                                 field_name = clean_field_name(f"{label_text}_display")
                                 details[field_name] = display_text
                                 break  # Take the first non-empty displayText
+
+            # Additional extraction for missing fields
+            # 1. Extract textarea elements (like Description Of Requirement)
+            for textarea in soup.find_all("textarea"):
+                textarea_id = textarea.get("id", "")
+                if textarea_id:
+                    # Find the corresponding label
+                    label_span = soup.find("span", id=f"lbl{textarea_id}")
+                    
+                    # Special case for Description Of Contract Requirement
+                    if not label_span and textarea_id == "descriptionOfContractRequirement":
+                        label_span = soup.find("span", id="lblDescriptionOfContractRequirement")
+                    
+                    if label_span:
+                        label_text = label_span.get_text(strip=True).rstrip(":")
+                        textarea_value = extract_textarea_value(textarea)
+                        if textarea_value:
+                            field_name = clean_field_name(label_text)
+                            details[field_name] = textarea_value
+
+            # 2. Extract displayText elements by ID matching
+            # Look for all displayText elements with IDs
+            for display_elem in soup.find_all("td", class_="displayText"):
+                display_id = display_elem.get("id", "")
+                if display_id:
+                    # Find the corresponding label span - try multiple approaches
+                    label_span = None
+                    
+                    # Try the standard lbl{display_id} pattern
+                    label_span = soup.find("span", id=f"lbl{display_id}")
+                    
+                    # If not found, try with proper case conversion
+                    if not label_span:
+                        # Convert camelCase to proper case for label ID
+                        # e.g., "displayPreparedDate" -> "lblDisplayPreparedDate"
+                        label_id = f"lbl{display_id[0].upper() + display_id[1:]}" if display_id else ""
+                        if label_id:
+                            label_span = soup.find("span", id=label_id)
+                    
+                    # If still not found, try exact match for known cases
+                    if not label_span:
+                        known_mappings = {
+                            "displayPreparedDate": "lblDisplayPreparedDate",
+                            "displayPreparedBy": "lblDisplayPreparedBy", 
+                            "displayStatus": "lblDisplayStatus",
+                            "displayLastModifiedDate": "lblDisplayLastModifiedDate",
+                            "displayLastModifiedBy": "lblDisplayLastModifiedBy",
+                            "displayClosedStatus": "lblDisplayClosedStatus",
+                            "displayClosedDate": "lblDisplayClosedDate",
+                            "displayClosedBy": "lblDisplayClosedBy",
+                            "displayApprovedPlaceholder": "lblDisplayApprovedPlaceholder",
+                            "displayApprovedDate": "lblDisplayApprovedDate",
+                            "displayApprovedBy": "lblDisplayApprovedBy"
+                        }
+                        if display_id in known_mappings:
+                            label_span = soup.find("span", id=known_mappings[display_id])
+                    
+                    if label_span:
+                        label_text = label_span.get_text(strip=True).rstrip(":")
+                        display_text = display_elem.get_text(strip=True)
+                        if display_text:
+                            field_name = clean_field_name(label_text)
+                            details[field_name] = display_text
+
+            # 3. Extract additional displayText elements that might be missed
+            # Look for spans with IDs that start with "lbl" and find their corresponding elements
+            # for label_span in soup.find_all("span", id=lambda x: x and x.startswith("lbl")):
+            #     label_id = label_span.get("id", "")
+            #     label_text = label_span.get_text(strip=True).rstrip(":")
+            #
+            #     if label_id and label_text:
+            #         # Remove "lbl" prefix to get the target element ID
+            #         target_id = label_id[3:] if label_id.startswith("lbl") else label_id
+            #
+            #         # Look for the target element
+            #         target_elem = soup.find(id=target_id)
+            #         if target_elem:
+            #             if target_elem.name == "textarea":
+            #                 value = extract_textarea_value(target_elem)
+            #             elif target_elem.name == "input":
+            #                 value = extract_input_value(target_elem)
+            #             elif target_elem.name == "select":
+            #                 value = extract_select_value(target_elem)
+            #             elif target_elem.has_attr("class") and "displayText" in target_elem["class"]:
+            #                 value = target_elem.get_text(strip=True)
+            #             else:
+            #                 value = target_elem.get_text(strip=True)
+            #
+            #             if value:
+            #                 field_name = clean_field_name(label_text)
+            #                 # Only add if not already present to avoid duplicates
+            #                 if field_name not in details:
+            #                     details[field_name] = value
 
             return details
 

@@ -36,6 +36,43 @@ class FPDSFieldMapper:
                 "search_terms": ["closed", "closed status", "contract closed", "terminated"],
                 "data_type": "string"
             },
+
+            "prepared_date": {
+                "description": "Date and time when the award record was prepared",
+                "category": "transaction",
+                "search_terms": ["prepared date", "date prepared", "award prepared", "prepared on"],
+                "data_type": "datetime"
+            },
+            "prepared_user": {
+                "description": "User who prepared the award record",
+                "category": "transaction",
+                "search_terms": ["prepared user", "prepared by", "award prepared by", "record creator"],
+                "data_type": "string"
+            },
+            "last_modified_date": {
+                "description": "Date and time when the award record was last modified",
+                "category": "transaction",
+                "search_terms": ["last modified date", "modified date", "updated date", "last updated"],
+                "data_type": "datetime"
+            },
+            "last_modified_user": {
+                "description": "User who last modified the award record",
+                "category": "transaction",
+                "search_terms": ["last modified user", "modified by", "updated by", "last updated by"],
+                "data_type": "string"
+            },
+            "approved_date": {
+                "description": "Date and time when the award was approved",
+                "category": "transaction",
+                "search_terms": ["approved date", "date approved", "award approved"],
+                "data_type": "datetime"
+            },
+            "approved_by_display": {
+                "description": "User who approved the award",
+                "category": "transaction",
+                "search_terms": ["approved by", "approver", "award approver"],
+                "data_type": "string"
+            },
             # Award ID Information
             "award_id_agency_id": {
                 "description": "Agency ID for the award",
@@ -306,7 +343,13 @@ class FPDSFieldMapper:
                 "search_terms": ["naics description", "industry description"],
                 "data_type": "string"
             },
-            
+            "description_of_requirement": {
+                "description": "Detailed description of the requirement (e.g., period of performance extension TI 003)",
+                "category": "product_service",
+                "search_terms": ["requirement description", "description of requirement", "period of performance",
+                                 "performance extension"],
+                "data_type": "string"
+            },
             # Competition Information
             "extent_competed": {
                 "description": "Extent of competition",

@@ -192,6 +192,14 @@ class FPDSDataFormatter:
             'est_ultimate_completion_date_estimated_ultimate_completion_date'
         }
 
+        self.datetime_fields = {
+            "prepared_date",
+            "last_modified_date",
+            "approved_date"
+        }
+        
+        # Pattern for datetime fields (MM/DD/YYYY HH:MM:SS)
+        self.datetime_pattern = re.compile(r'^\d{2}/\d{2}/\d{4}\s+\d{2}:\d{2}:\d{2}$')
         # Fields that should be money (float)
         self.money_fields = {
             'date_signed_current_obligation_amount',
@@ -242,11 +250,18 @@ class FPDSDataFormatter:
         if field_name in self.date_fields:
             return self._parse_date(value)
 
+        # Handle datetime fields
+        if field_name in self.datetime_fields:
+            return self._parse_datetime(value)
+
         # Handle money fields
         if field_name in self.money_fields:
             return self._parse_money(value)
 
         # Handle patterns
+        if self.datetime_pattern.match(value):
+            return self._parse_datetime(value)
+
         if self.date_pattern.match(value):
             return self._parse_date(value)
 
@@ -308,6 +323,17 @@ class FPDSDataFormatter:
         try:
             if self.date_pattern.match(value):
                 return datetime.strptime(value, '%m/%d/%Y')
+        except (ValueError, TypeError):
+            pass
+        return None
+
+    def _parse_datetime(self, value: str) -> Optional[datetime]:
+        """
+        Parse datetime value (MM/DD/YYYY HH:MM:SS format)
+        """
+        try:
+            if self.datetime_pattern.match(value):
+                return datetime.strptime(value, '%m/%d/%Y %H:%M:%S')
         except (ValueError, TypeError):
             pass
         return None

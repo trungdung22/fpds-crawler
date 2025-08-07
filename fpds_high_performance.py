@@ -457,12 +457,12 @@ def main():
     
     # Required parameters
     parser.add_argument('--start-date',
-                       help='Start date in YYYY/MM/DD format', default="2025/07/29")
+                       help='Start date in YYYY/MM/DD format', default="2026/01/01")
     parser.add_argument('--end-date',
-                       help='End date in YYYY/MM/DD format', default="2025/07/30")
+                       help='End date in YYYY/MM/DD format', default="2026/01/31")
     
     # Performance settings
-    parser.add_argument('--target-records', type=int, default=100000,
+    parser.add_argument('--target-records', type=int, default=200000,
                        help='Target number of records to extract (default: 100,000)')
     parser.add_argument('--workers', type=int, default=16,
                        help='Number of worker threads (default: 16)')
@@ -480,7 +480,7 @@ def main():
     parser.add_argument('--vendor', help='Filter by vendor name')
     
     # Retry settings
-    parser.add_argument('--enable-retry', action='store_true', default=False,
+    parser.add_argument('--enable-retry', action='store_true', default=True,
                        help='Enable automatic retry of failed requests')
     parser.add_argument('--max-retries', type=int, default=3,
                        help='Maximum number of retry attempts (default: 3)')
@@ -581,6 +581,51 @@ def main():
     except Exception as e:
         print(f"\nError: {e}")
         sys.exit(1)
+        
+def parse_month_year(month_year_str: str) -> tuple:
+    import calendar
+    """Parse month/year format (e.g., '1/2026' or '1,2/2026') and return start/end dates for the range"""
+    # Parse month/year format
+    if '/' in month_year_str:
+        month_part, year = month_year_str.split('/')
+        year = int(year)
+    else:
+        raise ValueError("Invalid format. Use M/YYYY or M1,M2/YYYY (e.g., 1/2026 or 1,2/2026)")
+    
+    # Validate year
+    if year < 1900 or year > 2100:
+        raise ValueError("Year must be between 1900 and 2100")
+    
+    # Parse months (can be single month or comma-separated list)
+    if ',' in month_part:
+        # Multiple months: "1,2,3/2026"
+        months = [int(m.strip()) for m in month_part.split(',')]
+        # Sort months to ensure proper order
+        months.sort()
+    else:
+        # Single month: "1/2026"
+        months = [int(month_part)]
+    
+    # Validate all months
+    for month in months:
+        if month < 1 or month > 12:
+            raise ValueError(f"Month {month} must be between 1 and 12")
+    
+    # Get first day of first month and last day of last month
+    first_month = months[0]
+    last_month = months[-1]
+    
+    first_day = datetime(year, first_month, 1)
+    last_day = datetime(year, last_month, calendar.monthrange(year, last_month)[1])
+    
+    # Format as YYYY/MM/DD
+    start_date = first_day.strftime('%Y/%m/%d')
+    end_date = last_day.strftime('%Y/%m/%d')
+    print(start_date)
+    print(end_date)
+    return start_date, end_date
+
 
 if __name__ == "__main__":
-    main() 
+    # parse_month_year("1,2/2026")
+    main()

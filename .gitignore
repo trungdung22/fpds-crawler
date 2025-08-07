@@ -1,3 +1,5 @@
 __pycache__
 docker
 .idea
+result_data
+failed_request_data
