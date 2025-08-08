@@ -130,6 +130,7 @@ class FPDSEnhancedExtractor:
                         f"Processing contract {len(all_contracts) + i + 1}/{max_results}: {contract.get('award_id', 'Unknown')}")
                     # Get detail page data
                     detail_data = self._extract_contract_details(contract)
+                    detail_data["detail_params"] = contract["view_link_params"]
                     if detail_data:
                         contract['detail_data'] = detail_data
 

@@ -457,9 +457,9 @@ def main():
     
     # Required parameters
     parser.add_argument('--start-date',
-                       help='Start date in YYYY/MM/DD format', default="2026/01/01")
+                       help='Start date in YYYY/MM/DD format', default="2026/02/01")
     parser.add_argument('--end-date',
-                       help='End date in YYYY/MM/DD format', default="2026/01/31")
+                       help='End date in YYYY/MM/DD format', default="2026/02/28")
     
     # Performance settings
     parser.add_argument('--target-records', type=int, default=200000,
@@ -627,5 +627,5 @@ def parse_month_year(month_year_str: str) -> tuple:
 
 
 if __name__ == "__main__":
-    # parse_month_year("1,2/2026")
+    #parse_month_year("2/2026")
     main()
